@@ -48,15 +48,15 @@ class JpaDemoApplicationTests {
     @Test
     public void testFindUserByUsername() {
         List<User> xiaowang = userRepository.findAllByUsername("xiaowang");
-        for (User user:xiaowang) {
+        for (User user : xiaowang) {
             System.out.println(user);
         }
     }
 
     @Test
     public void testFindUserByUsernameAndPassword() {
-        List<User> xiaowang = userRepository.findByUsernameAndPassword("xiaowang","12131321");
-        for (User user:xiaowang) {
+        List<User> xiaowang = userRepository.findByUsernameAndPassword("xiaowang", "12131321");
+        for (User user : xiaowang) {
             System.out.println(user);
         }
     }
@@ -64,10 +64,45 @@ class JpaDemoApplicationTests {
 
     @Test
     public void testFindByUsernameLike() {
-        List<User> xiaowang = userRepository.findByUsernameLike("xiaowang%");
-        for (User user:xiaowang) {
+        List<User> users = userRepository.findByUsernameLike("xiaowang%");
+        for (User user : users) {
             System.out.println(user);
         }
+    }
+
+    @Test
+    public void testFind4() {
+        List<Integer> users = userRepository.findAllUser();
+        for (Integer user : users) {
+            System.out.println(user);
+        }
+    }
+
+    @Test
+    public void testFind5() {
+        List<User> users = userRepository.findUserByPassword();
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
+    @Test
+    public void testFind6() {
+        Integer users = userRepository.findCount();
+        System.out.println(users);
+    }
+
+    @Test
+    public void testFind7() {
+        int lines = userRepository.updateUsernameById("China is best", 4);
+        System.out.println(lines);
+    }
+
+    //origin SQL
+    @Test
+    public void testFind8() {
+        int lines = userRepository.updateUsernameById2("China is best", 4);
+        System.out.println(lines);
     }
 
 
